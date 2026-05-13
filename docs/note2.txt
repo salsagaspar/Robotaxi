@@ -1,0 +1,26 @@
+Sistem Machine Learning yang ada di dalam proyek robotaxi:
+
+1. Prediksi Permintaan (Demand Forecasting) 📈
+Apa itu: Memprediksi berapa banyak pesanan Robotaxi yang akan terjadi di lokasi dan waktu tertentu di masa depan (misal: "Berapa banyak taksi yang dibutuhkan di pusat kota besok jam 8 pagi?").
+Algoritma: ARIMA, Prophet (dari Meta), XGBoost, atau LSTM (Deep Learning).
+Manfaat Bisnis: Membantu perusahaan mendistribusikan armada Robotaxi ke area yang tepat sebelum permintaan melonjak, mengurangi waktu tunggu penumpang, dan memaksimalkan pendapatan.
+
+2. Penetapan Harga Dinamis (Dynamic / Surge Pricing) 💰
+Apa itu: Menentukan harga perjalanan secara real-time berdasarkan faktor-faktor seperti cuaca, kemacetan, jam sibuk, ketersediaan armada, dan jumlah permintaan.
+Algoritma: Random Forest, Gradient Boosting (LightGBM/XGBoost), atau Reinforcement Learning.
+Manfaat Bisnis: Mengoptimalkan keuntungan saat peak hour sekaligus menjaga ketersediaan armada agar sistem tidak kewalahan.
+
+3. Pemeliharaan Prediktif (Predictive Maintenance) 🛠️
+Apa itu: Memprediksi kapan sebuah mobil Robotaxi akan mengalami kerusakan atau membutuhkan perawatan (misal: baterai, sensor LIDAR, ban) sebelum kerusakan itu benar-benar terjadi.
+Algoritma: Classification (Random Forest, SVM), Survival Analysis, atau Autoencoders.
+Manfaat Bisnis: Mengurangi biaya perbaikan tak terduga, mencegah mobil mogok saat membawa penumpang (sangat penting untuk brand image), dan meningkatkan umur pakai armada.
+
+4. Prediksi Churn Pelanggan (Customer Churn Prediction) 📉
+Apa itu: Mengidentifikasi pelanggan mana yang kemungkinan besar akan berhenti menggunakan layanan Robotaxi dan beralih ke kompetitor atau transportasi lain.
+Algoritma: Logistic Regression, Decision Tree, XGBoost.
+Manfaat Bisnis: Tim marketing bisa memberikan promo diskon secara spesifik hanya kepada pengguna yang berisiko pergi, sehingga biaya marketing lebih efisien.
+
+5. Prediksi Waktu Tiba (ETA - Estimated Time of Arrival) yang Lebih Akurat ⏱️
+Apa itu: Memprediksi durasi perjalanan dengan lebih akurat dari titik A ke titik B dengan mempertimbangkan data historis kemacetan, cuaca, dan kondisi jalan.
+Algoritma: XGBoost, CatBoost, atau Graph Neural Networks.
+Manfaat Bisnis: Meningkatkan kepuasan pelanggan dengan janji waktu penjemputan dan kedatangan yang tepat.

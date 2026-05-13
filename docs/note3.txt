@@ -1,0 +1,21 @@
+1. 🧠 Pembuatan dan Pelatihan 5 Model Machine Learning
+Sudah membuat file baru bernama train_models.py yang melatih dan menyimpan (sebagai file .pkl di dalam folder models/) kelima model berikut:
+
+Model Demand Forecasting (Random Forest Regressor)
+Model Dynamic Pricing (Random Forest Regressor)
+Model Predictive Maintenance (Random Forest Classifier)
+Model Customer Churn (Random Forest Classifier)
+Model Prediksi ETA (Random Forest Regressor)
+(Semua model telah berhasil dilatih menggunakan data robotaxi_rides.csv dan robotaxi_users.csv)
+
+2. 💻 Update Dashboard Interaktif (Plotly Dash)
+Sudah merombak total file dashboard.py sekarang! Sekarang Dashboard tersebut memiliki sistem Tab:
+- Tab 1: 📊 Executive Insights (Ini adalah grafik-grafik analisis bisnismu yang sebelumnya sudah ada, desainnya tetap menggunakan Dark Theme).
+- Tab 2: 🤖 AI Models (Predictive) - BARU! (Ini adalah "Control Center" yang interaktif).
+
+Di Tab AI Models, sudah membuat input interaktif dan callback untuk kelima model:
+
+- Demand Forecasting: Bisa pilih nama kota (misal: Denver, Miami), lalu akan muncul grafik Time Series prediksi permintaan untuk 24 jam ke depan!
+- Dynamic Pricing & ETA Predictor: Bisa masukkan Jarak (Miles), Durasi, dan Jam penjemputan, lalu klik tombol untuk melihat prediksi Harga (Fare) dan ETA.
+- Predictive Maintenance: Masukkan sisa baterai, mileage, tekanan ban, dll. AI akan memberitahu apakah mobil butuh masuk bengkel atau "Kondisi Aman".
+- Churn Prediction: Masukkan umur, jumlah perjalanan, dan promo pelanggan. Sistem akan memprediksi apakah ia "Berisiko Churn" atau masih "Pelanggan Setia".
