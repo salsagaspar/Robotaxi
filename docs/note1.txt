@@ -1,0 +1,62 @@
+Mari kita bedah bisnis Robotaxi (taksi otonom/tanpa awak) ini bersama-sama berdasarkan dua dataset yang ada di folder Anda: robotaxi_rides.csv (data perjalanan) dan robotaxi_users.csv (data profil pengguna).
+
+Sebagai Data Analyst, langkah pertama saya di tahap Business Understanding adalah memahami konteks bisnis dari kacamata data yang tersedia.
+
+Berdasarkan data yang kita punya:
+
+Data Rides (Perjalanan): Kita punya info operasional (waktu tunggu, durasi, jarak), finansial (tarif, tip, surge multiplier), perilaku (tujuan perjalanan, status pembatalan), dan kepuasan (rating pengguna).
+Data Users (Pengguna): Kita punya info demografi (umur, kota), loyalitas (tier, status akun), dan akuisisi (sumber referral, tipe akun personal/bisnis).
+
+Di tahap awal ini kita perlu mendefinisikan Problem Statement (Masalah Utama), mari kita berandai-andai sedang diskusi dengan para eksekutif Robotaxi. Dengan data yang kita miliki, ada beberapa area masalah potensial yang bisa kita selesaikan.
+
+Berikut adalah 3 opsi Problem Statement yang paling relevan untuk diangkat. Mari kita angkat salah satu Problem Statement dan kita pecahkan.
+
+Opsi 1: Masalah Efisiensi Operasional & Pengalaman Pelanggan
+Problem: Ada indikasi bahwa banyak perjalanan yang statusnya Cancelled (dibatalkan) atau No-show (pelanggan tidak muncul), serta tingginya wait_time_minutes di area tertentu. Ini merugikan secara operasional (mobil membuang energi tanpa hasil) dan membuat pelanggan frustrasi.
+Fokus Analisis: Mencari tahu faktor apa yang membuat pelanggan membatalkan pesanan (apakah karena waktu tunggu terlalu lama, tipe kendaraan, atau lonjakan harga?), lalu memberikan rekomendasi untuk meminimalkannya.
+
+Opsi 2: Masalah Pendapatan & Segmentasi Pengguna (Marketing)
+Problem: Tim marketing ingin meningkatkan loyalitas dan memaksimalkan pendapatan dari pelanggan bernilai tinggi (high-value customers), namun mereka belum tahu karakteristik pelanggan seperti apa yang paling sering memberi tip besar, melakukan perjalanan jarak jauh, atau menggunakan akun bisnis (is_business_account).
+Fokus Analisis: Melakukan segmentasi pelanggan berdasarkan profil (umur, tier loyalitas) dan perilaku perjalanan mereka (tujuan perjalanan, surge multiplier), untuk menyusun target promosi yang lebih personal.
+
+Opsi 3: Masalah Kinerja Finansial (Pricing Strategy)
+Problem: Perusahaan ingin mengevaluasi apakah sistem penetapan harga dinamis (surge_multiplier) saat ini sudah efektif. Apakah surge multiplier yang tinggi justru menurunkan jumlah Completed rides (perjalanan selesai) atau menurunkan user_rating?
+Fokus Analisis: Menganalisis korelasi antara tarif (fare_amount_usd), lonjakan harga, dan tingkat penyelesaian perjalanan serta kepuasan pelanggan.
+
+
+------Rumuskan Objectif, KPI, dan Scope (Ruang Lingkup)------
+
+1. Efisiensi Operasional & Pengalaman Pelanggan (Fokus Pembatalan & Waktu Tunggu)
+Objektif Analitik: Mengidentifikasi korelasi antara waktu tunggu (wait_time_minutes), atribut perjalanan (seperti kota atau tipe kendaraan), dengan tingkat penyelesaian perjalanan (ride_status).
+
+KPI (Metrik Keberhasilan Bisnis):
+- Mendeteksi akar masalah untuk menurunkan Cancellation Rate (Tingkat Pembatalan) dan No-Show Rate sebesar X%.
+- Mengidentifikasi area/kondisi untuk menurunkan Rata-rata Waktu Tunggu (Average Wait Time).
+
+Scope (Ruang Lingkup):
+In-Scope: Analisis hanya berfokus pada kolom ride_status (khususnya Cancelled, No-show, dan Completed), wait_time_minutes, vehicle_type, dan pickup_city.
+Out-of-Scope: Kita tidak akan menganalisis sisi finansial (tarif/tip) secara mendalam, kecuali jika itu menjadi alasan utama pembatalan.
+
+2. Pendapatan & Segmentasi Pengguna (Marketing)
+Objektif Analitik: Membangun profil pelanggan (Customer Profiling) untuk membedakan pelanggan bernilai tinggi (high-value) dengan pelanggan biasa, berdasarkan perilaku pengeluaran dan loyalitas mereka.
+
+KPI (Metrik Keberhasilan Bisnis):
+
+- Menemukan target segmen untuk meningkatkan Average Revenue Per User (ARPU).
+- Mengidentifikasi segmen yang paling mungkin memberikan tip tinggi untuk meningkatkan rasio Tip terhadap Tarif.
+- Menemukan strategi untuk mendorong konversi dari Bronze/Silver ke Gold/Platinum/Diamond (loyalty_tier).
+
+Scope (Ruang Lingkup):
+In-Scope: Penggabungan (Join) data robotaxi_users (umur, tier, bahasa, tipe akun) dengan robotaxi_rides (tarif, tip, tujuan perjalanan, jarak).
+Out-of-Scope: Strategi akuisisi pengguna baru (kita fokus pada pengguna yang sudah ada) dan operasional teknis rute mobil.
+
+3. Kinerja Finansial (Pricing Strategy & Surge Multiplier)
+Objektif Analitik: Mengevaluasi dampak dari penerapan harga dinamis (surge_multiplier) terhadap konversi pesanan dan tingkat kepuasan pelanggan (user_rating).
+
+KPI (Metrik Keberhasilan Bisnis):
+- Mengoptimalkan titik keseimbangan antara pendapatan tertinggi dari surge pricing tanpa menyebabkan penurunan Conversion Rate (pesanan yang diselesaikan).
+- Mencegah penurunan Rata-rata Rating Pengguna akibat harga yang terlalu tinggi.
+
+Scope (Ruang Lingkup):
+In-Scope: Analisis mendalam pada kolom surge_multiplier, fare_amount_usd, ride_status, waktu (jam sibuk dari pickup_datetime), dan user_rating.
+Out-of-Scope: Biaya pemeliharaan kendaraan (karena datanya tidak ada) dan program diskon (promo_credits_balance kita jadikan variabel pendukung saja).
